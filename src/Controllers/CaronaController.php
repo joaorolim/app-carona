@@ -181,7 +181,7 @@ class CaronaController extends ControllerAbstract
             $caroneiros_atuais = $aux;
 
             /******************************************************************
-             *  Esses valores serão usados para veriricar se houve alteração **
+             *  Esses valores serão usados para verificar se houve alteração **
              *****************************************************************/
             array_unshift( $id_caroneiros_atuais, $carona->getMotorista()->getIdPessoa() );
 
@@ -201,7 +201,7 @@ class CaronaController extends ControllerAbstract
                 'dados' => $dadosAtuais
             ];
             /******************************************************************
-             * /Esses valores serão usados para veriricar se houve alteração **
+             * /Esses valores serão usados para verificar se houve alteração **
              *****************************************************************/
 
             return $this->c->renderer->render($response, 'template.php', [

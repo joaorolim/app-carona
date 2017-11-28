@@ -4064,6 +4064,20 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin-bottom: 0;
   }
 }
+
+/*custom code*/
+@media (max-width: 768px) {
+  .nav-tabs.nav-custom > li {
+    /*border: 1px solid blue;*/
+    display: inline-block;
+    width: auto;
+    white-space: nowrap;
+    float: none;
+    overflow-x: ;
+  }
+}
+
+
 .nav-tabs.nav-justified > li > a {
   margin-right: 0;
   border-radius: 4px;

@@ -52,6 +52,10 @@ $container['Carona'] = function ($c) {
     return new \Fatec\Models\Carona($c);
 };
 
+$container['Fechamento'] = function ($c) {
+    return new \Fatec\Models\Fechamento($c);
+};
+
 $container['LoginController'] = function ($c) {
     return new \Fatec\Controllers\LoginController($c);
 };
@@ -74,4 +78,8 @@ $container['RotaController'] = function ($c) {
 
 $container['CaronaController'] = function ($c) {
     return new \Fatec\Controllers\CaronaController($c);
+};
+
+$container['FechamentoController'] = function ($c) {
+    return new \Fatec\Controllers\FechamentoController($c);
 };

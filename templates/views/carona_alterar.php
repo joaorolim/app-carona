@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="form-group col-md-3" style="margin-right:20px">
                     <div>
-                        <input type="date" class="form-control" id="data" name="data" value="<?php echo ( $carona->getData() ?? null ); ?>" style="width:65%;" required>
+                        <input type="date" class="form-control" id="data" name="data" value="<?php echo ( $carona->getData() ?? null ); ?>" style="width:65%;" placeholder="dd/mm/aaaa" required>
                     </div>
                 </div>
                 <div class="form-group col-md-4 col-md-pull-1">

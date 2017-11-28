@@ -49,6 +49,16 @@ th {
     color: white;
 }
 
+caption {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  border: 1px solid;
+  padding: 5px;
+  text-align: center;
+  background-color: black;
+}
+
 .modal-header {
   background-color: #5cb85c;
   color:white !important;
@@ -181,3 +191,13 @@ th {
   font-size: 50px;
 }
 
+@media screen and (min-width: 480px) {
+  #div-date_to {
+    /*border: 1px solid red;*/
+    padding-left:30px;
+  }
+
+  #div-btn_filter {
+    padding-left:40px;
+  }
+}

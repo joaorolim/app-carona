@@ -3,6 +3,9 @@
 
 <head>
     <meta charset="utf-8">
+
+    <meta property="og:image" content="<?php echo getBaseURL(); ?>assets/img/Logo_sistema_ ajustado.png"/>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bora-lá</title>
     <link href="<?php echo getBaseURL(); ?>assets/img/Logo_sistema_ ajustado.png" rel="shortcut icon" type="image/ico" />

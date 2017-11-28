@@ -49,3 +49,12 @@ $app->group('/carona', function() use ($app) {
     $app->post('', 'CaronaController:index');
     $app->post('/cadastrar', 'CaronaController:cadastrar');
 });
+
+$app->group('/fechamento', function() use ($app) {
+    $app->get('', 'FechamentoController:index');
+    // $app->get('/pagina/{page}', 'FechamentoController:index');
+    $app->get('/alterar[/{id}]', 'FechamentoController:alterar');
+    // $app->get('/excluir/{id}', 'FechamentoController:deletar');
+    $app->post('', 'FechamentoController:index');
+    $app->post('/cadastrar', 'FechamentoController:cadastrar');
+});

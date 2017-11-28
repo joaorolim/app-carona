@@ -3,7 +3,17 @@
 
 <head>
     <meta charset="utf-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:url"                content="<?php echo getBaseURL(); ?>" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="Bora-lá" />
+    <meta property="og:description"        content="O melhor App de gerenciamento de caronas...!" />
+    <meta property="og:image"              content="<?php echo getBaseURL(); ?>assets/img/car.png"/>
+    <meta property="og:image:width"        content="280">
+    <meta property="og:image:height"       content="260">
+
     <title>Bora-lá</title>
     <link href="<?php echo getBaseURL(); ?>assets/img/Logo_sistema_ ajustado.png" rel="shortcut icon" type="image/ico" />
     <link rel="stylesheet" href="<?php echo getBaseURL(); ?>assets/bootstrap/css/bootstrap.min.css">

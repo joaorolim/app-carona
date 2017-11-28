@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="form-group col-md-3" style="margin-right:20px">
                     <div>
-                        <input type="date" class="form-control" id="data" name="data" style="width:65%;" required>
+                        <input type="date" class="form-control" id="data" name="data" value="<?php echo date('Y-m-d') ?>" style="width:65%;" required>
                     </div>
                 </div>
                 <div class="form-group col-md-4 col-md-pull-1">
@@ -82,26 +82,22 @@
 
 <div class="row">
     <div class='col-md-12'>
-        <h3>Lista</h3>
-        <form id="form_filtro" name="form_filtro" class="form-inline" action="<?php echo getBaseURL().'carona' ?>" method="post" accept-charset="utf-8">
-            <div class="row">
+        <h3>Filtrar caronas por data</h3>
+        <div class="row">
+            <form id="form_filtro" name="form_filtro" class="form-inline" action="<?php echo getBaseURL().'carona' ?>" method="post" accept-charset="utf-8">
                 <div class="form-group col-md-3">
-                    <div>
-                        <input type="date" class="form-control" id="date_from" name="date_from" value="<?php echo $date_from ?? null ?>" style="width:65%;" required>
-                    </div>
+                    <label for="date_from">De:</label>
+                    <input type="date" class="form-control" id="date_from" name="date_from" value="<?php echo $date_from ?? null ?>" style="width:65%;" required>
                 </div>
-                <div class="form-group col-md-3 col-md-pull-1">
-                    <div>
-                        <input type="date" class="form-control" id="date_to" name="date_to" value="<?php echo $date_to ?? null ?>" style="width:65%;" required>
-                    </div>
+                <div id="div-date_to" class="form-group col-md-3 col-md-pull-1">
+                    <label for="date_to">Até:</label>
+                    <input type="date" class="form-control" id="date_to" name="date_to" value="<?php echo $date_to ?? null ?>" style="width:65%;" required>
                 </div>
-                <div class="form-group col-md-2 col-md-pull-2">
-                    <div>
-                        <button type="submit" class="btn btn-success btn-filter">Filtrar</button>
-                    </div>
+                <div id="div-btn_filter" class="form-group col-md-6 col-md-pull-2">
+                    <button type="submit" class="btn btn-success btn-filter">Filtrar</button>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
         <br/>
         <div class="table-responsive">
             <div class="table">

@@ -1,0 +1,84 @@
+https://pt.stackoverflow.com/questions/38671/sql-query-joining-5-tabelas
+https://www.google.com.br/search?q=algebra+relacional&rlz=1C1NHXL_pt-BRBR730BR730&oq=algebra+relacional&aqs=chrome..69i57.4059j0j8&sourceid=chrome&ie=UTF-8
+
+SELECT carona.*, fechamento.id_fechamento
+FROM carona, fechamento
+WHERE fechamento.mes = 10 AND fechamento.ano = 2017 AND (carona.data BETWEEN '2017-10-01 00:00:00' AND '2017-10-31 00:00:00')
+
+SELECT *
+FROM (SELECT c.*, f.id_fechamento FROM carona as c, fechamento as f WHERE f.mes = 10 AND f.ano = 2017 AND (c.data BETWEEN '2017-10-01 00:00:00' AND '2017-10-31 00:00:00')) as fm
+
+
+
+SELECT fm.id_fechamento, fm.id_carona, car.id_carro, car.descricao, car.id_pessoa, p.nome AS `motorista`, fm.data, r.descricao, r.km, carf.media_comb, carf.media_km_litro
+FROM (SELECT c.*, f.id_fechamento
+      FROM carona AS c, fechamento AS f
+      WHERE f.mes = 10 AND f.ano = 2017 AND (c.data BETWEEN '2017-10-01 00:00:00' AND '2017-10-31 00:00:00')) AS fm
+JOIN carro AS car ON car.id_carro = fm.id_carro
+JOIN pessoa AS p ON p.id_pessoa = car.id_pessoa
+JOIN carro_fechamento AS carf ON (carf.id_fechamento = fm.id_fechamento AND carf.id_carro = fm.id_carro)
+JOIN rota AS r ON r.id_rota = fm.id_rota
+ORDER BY p.nome, fm.data
+
+
+SELECT tab.*, p.nome AS `caroneiro`
+FROM (SELECT aux.*, cp.id_pessoa as `id_caroneiro`
+    FROM   (SELECT fm.id_fechamento, fm.id_carona, car.id_carro, car.descricao, car.id_pessoa AS `id_motorista`, p.nome AS `motorista`, fm.data, r.descricao as `rota`, r.km, carf.media_comb, carf.media_km_litro
+            FROM (SELECT c.*, f.id_fechamento
+                  FROM carona AS c, fechamento AS f
+                  WHERE f.mes = 10 AND f.ano = 2017 AND (c.data BETWEEN '2017-10-01 00:00:00' AND '2017-10-31 00:00:00')) AS fm
+            JOIN carro AS car ON car.id_carro = fm.id_carro
+            JOIN pessoa AS p ON p.id_pessoa = car.id_pessoa
+            JOIN carro_fechamento AS carf ON (carf.id_fechamento = fm.id_fechamento AND carf.id_carro = fm.id_carro)
+            JOIN rota AS r ON r.id_rota = fm.id_rota
+            ORDER BY p.nome, fm.data) AS aux
+    JOIN carona_pessoa as cp ON cp.id_carona = aux.id_carona) as tab
+JOIN pessoa as p ON p.id_pessoa = tab.id_caroneiro
+
+
+SELECT f.id_fechamento, f.mes, f.ano, car.descricao, p.nome as `motorista`, c.data, r.descricao, r.km, carf.media_comb, carf.media_km_litro
+FROM carro_fechamento as carf
+JOIN carro as car ON car.id_carro = carf.id_carro
+JOIN fechamento as f on f.id_fechamento = carf.id_fechamento
+JOIN pessoa as p ON p.id_pessoa = car.id_pessoa
+JOIN carona_pessoa as cp ON cp.id_pessoa = p.id_pessoa
+JOIN carona as c ON c.id_carona = cp.id_carona
+JOIN rota as r ON r.id_rota = c.id_rota
+WHERE f.mes = 10 AND f.ano = 2017 AND (c.data BETWEEN '2017-10-01 00:00:00' AND '2017-10-31 00:00:00')
+
+
+
+
+
+
+
+
+SELECT tab.*, p.nome AS `caroneiro`, pf.pagou
+FROM (SELECT aux.*, cp.id_pessoa as `id_caroneiro`
+    FROM (SELECT fm.id_fechamento, fm.id_carona, car.id_carro, car.descricao, car.id_pessoa AS `id_motorista`, p.nome AS `motorista`, fm.data, r.descricao as `rota`, r.km, carf.media_comb, carf.media_km_litro
+            FROM (SELECT c.*, f.id_fechamento
+                  FROM carona AS c, fechamento AS f
+                  WHERE f.mes = 10 AND f.ano = 2017 AND (c.data BETWEEN '2017-10-01 00:00:00' AND '2017-10-31 00:00:00')) AS fm
+            JOIN carro AS car ON car.id_carro = fm.id_carro
+            JOIN pessoa AS p ON p.id_pessoa = car.id_pessoa
+            JOIN carro_fechamento AS carf ON (carf.id_fechamento = fm.id_fechamento AND carf.id_carro = fm.id_carro)
+            JOIN rota AS r ON r.id_rota = fm.id_rota
+            ORDER BY p.nome, fm.data) AS aux
+    JOIN carona_pessoa as cp ON cp.id_carona = aux.id_carona) as tab
+JOIN pessoa as p ON p.id_pessoa = tab.id_caroneiro
+JOIN pessoa_fechamento as pf ON (pf.id_fechamento = tab.id_fechamento AND pf.id_pessoa = tab.id_caroneiro)
+ORDER BY tab.id_carro, tab.id_carona, caroneiro
+
+
+SELECT c.* FROM carona AS c WHERE c.data BETWEEN '2017-11-01 00:00:00' AND '2017-11-31 00:00:00' ORDER BY c.id_carro
+
+
+getCaroneirosPorperiodo()
+SELECT * FROM carona_pessoa as cp
+JOIN carona as c ON c.id_carona = cp.id_carona
+WHERE c.data BETWEEN '2017-11-01' AND '2017-11-30'
+
+
+
+
+

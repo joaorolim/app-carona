@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 21-Nov-2017 às 20:07
+-- Generation Time: 28-Nov-2017 às 01:52
 -- Versão do servidor: 5.7.14-log
 -- PHP Version: 7.0.10
 
@@ -46,7 +46,11 @@ INSERT INTO `carona` (`id_carona`, `id_rota`, `data`, `id_carro`) VALUES
 (9, 3, '2017-11-20 00:00:00', 3),
 (10, 1, '2017-11-21 00:00:00', 1),
 (11, 3, '2017-11-22 00:00:00', 1),
-(12, 3, '2017-11-23 00:00:00', 2);
+(12, 3, '2017-11-23 00:00:00', 2),
+(14, 4, '2017-11-24 00:00:00', 3),
+(15, 3, '2017-09-18 00:00:00', 1),
+(16, 3, '2017-09-20 00:00:00', 1),
+(17, 3, '2017-09-21 00:00:00', 2);
 
 -- --------------------------------------------------------
 
@@ -89,7 +93,17 @@ INSERT INTO `carona_pessoa` (`id_carona`, `id_pessoa`) VALUES
 (11, 1),
 (11, 2),
 (11, 3),
-(11, 7);
+(11, 7),
+(14, 7),
+(14, 1),
+(15, 1),
+(15, 2),
+(15, 3),
+(16, 1),
+(16, 2),
+(17, 2),
+(17, 3),
+(17, 1);
 
 -- --------------------------------------------------------
 
@@ -131,7 +145,12 @@ CREATE TABLE `carro_fechamento` (
 
 INSERT INTO `carro_fechamento` (`id_fechamento`, `id_carro`, `media_comb`, `media_km_litro`) VALUES
 (1, 1, '3.57849', '12.32678'),
-(1, 2, '3.69735', '13.58257');
+(1, 2, '3.69735', '13.58257'),
+(2, 1, '3.70000', '12.30000'),
+(2, 2, '4.00000', '13.50000'),
+(2, 3, '4.20000', '11.40000'),
+(3, 1, '3.55000', '12.40000'),
+(3, 2, '3.67000', '11.30000');
 
 -- --------------------------------------------------------
 
@@ -150,7 +169,9 @@ CREATE TABLE `fechamento` (
 --
 
 INSERT INTO `fechamento` (`id_fechamento`, `mes`, `ano`) VALUES
-(1, 10, 2017);
+(1, 10, 2017),
+(2, 11, 2017),
+(3, 9, 2017);
 
 -- --------------------------------------------------------
 
@@ -196,9 +217,19 @@ CREATE TABLE `pessoa_fechamento` (
 --
 
 INSERT INTO `pessoa_fechamento` (`id_pessoa`, `id_fechamento`, `pagou`) VALUES
+(3, 1, 1),
 (1, 1, 1),
 (2, 1, 0),
-(3, 1, 1);
+(1, 2, 0),
+(8, 2, 1),
+(2, 2, 0),
+(4, 2, 1),
+(3, 2, 1),
+(7, 2, 1),
+(13, 2, 1),
+(1, 3, 0),
+(2, 3, 0),
+(3, 3, 0);
 
 -- --------------------------------------------------------
 
@@ -288,7 +319,7 @@ ALTER TABLE `rota`
 -- AUTO_INCREMENT for table `carona`
 --
 ALTER TABLE `carona`
-  MODIFY `id_carona` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_carona` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `carro`
 --
@@ -298,7 +329,7 @@ ALTER TABLE `carro`
 -- AUTO_INCREMENT for table `fechamento`
 --
 ALTER TABLE `fechamento`
-  MODIFY `id_fechamento` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_fechamento` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `pessoa`
 --

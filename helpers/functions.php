@@ -147,3 +147,62 @@ function comparaArrays( $array_1, $array_2)
 
     return true;
 }
+
+function getUltimoDiaMes( $mes, $ano = null )
+{
+    if ( ! $ano ) {
+        $ano = date('Y');
+    }
+
+    // 31 or 30 days?
+    if($mes == 1 || $mes == 3 || $mes == 5 || $mes == 7 || $mes == 8 || $mes == 10 || $mes == 12) {
+        $numDias = 31;
+    } else if ($mes == 4 || $mes == 6 || $mes == 9 || $mes == 11) {
+        $numDias = 30;
+    } else {
+        // If month is February, calculate whether it is a leap year or not
+        $numDias = ( ( $ano - 2016 ) % 4 === 0 ) ? 29 : 28;
+    }
+
+    return $numDias;
+}
+
+
+function getAllMeses( $num = null, $desc = null )
+{
+    $meses = [
+        1 => 'janeiro',
+        2 => 'fevereiro',
+        3 => 'março',
+        4 => 'abril',
+        5 => 'maio',
+        6 => 'junho',
+        7 => 'julho',
+        8 => 'agosto',
+        9 => 'setembro',
+        10 => 'outubro',
+        11 => 'novembro',
+        12 => 'dezembro',
+    ];
+
+    if ( $num ) {
+        foreach ( $meses as $key => $value ) {
+            if ( $key == $num ) {
+                return array($key => $value);
+                exit();
+            }
+        }
+    }
+
+    if ( $desc ) {
+        foreach ( $meses as $key => $value ) {
+            if ( $value == $desc ) {
+                return array($key => $value);
+                exit();
+            }
+        }
+    }
+
+    return $meses;
+
+}

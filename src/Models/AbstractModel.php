@@ -50,16 +50,6 @@ abstract class AbstractModel
 
 	public function list( $pagina, $date_from = null, $date_to = null )
 	{
-
-        // echo "<pre>list<br/>";
-        // print_r($pagina);
-        // echo "<br/>date_from<br/>";
-        // print_r($date_from);
-        // echo "<br/>date_to<br/>";
-        // print_r($date_to);
-        // echo "<pre>";
-        // exit();
-
         //Calcula à partir de qual valor será exibido
         $inicio = ( $this->qtd * $pagina ) - $this->qtd;
 
